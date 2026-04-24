@@ -55,7 +55,7 @@ export default function Chat({ context }: ChatProps) {
   }
 
   return (
-    <div className="bg-slate-800 rounded-lg border border-slate-700 flex flex-col h-96">
+    <div className="bg-slate-800 rounded-lg border border-slate-700 flex flex-col" style={{ height: 'calc(100vh - 220px)', minHeight: '300px' }}>
       <div className="px-4 py-3 border-b border-slate-700 flex items-center justify-between">
         <h3 className="text-sm font-medium text-white">Ask Your Tutor</h3>
         <div className="flex gap-1">
