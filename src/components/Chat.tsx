@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
+import MermaidDiagram from './MermaidDiagram'
 import { sendChat } from '../utils/ai'
 
 interface Message {
@@ -109,6 +110,23 @@ export default function Chat({ context }: ChatProps) {
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
+                    components={{
+                      code({ className, children, ...props }) {
+                        const match = /language-(\w+)/.exec(className || '')
+                        if (match && match[1] === 'mermaid') {
+                          return (
+                            <MermaidDiagram
+                              chart={String(children).replace(/\n$/, '')}
+                            />
+                          )
+                        }
+                        return (
+                          <code className={className} {...props}>
+                            {children}
+                          </code>
+                        )
+                      },
+                    }}
                   >
                     {msg.content}
                   </ReactMarkdown>

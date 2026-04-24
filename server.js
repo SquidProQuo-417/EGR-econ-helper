@@ -48,7 +48,8 @@ Be encouraging but honest. If the student's approach is wrong, explain why clear
 FORMATTING RULES (your responses are rendered as markdown):
 - For currency, always write "\\$" (escaped dollar sign), never a bare "$". A bare $ is interpreted as a math delimiter and will break rendering. Example: write \\$5,000 not $5,000.
 - Use LaTeX math notation with $...$ for inline math and $$...$$ for display math when writing equations.
-- Use standard markdown tables with | and --- for alignment rows.`;
+- Use standard markdown tables with | and --- for alignment rows.
+- You can use Mermaid diagrams in fenced code blocks (\`\`\`mermaid) to illustrate flowcharts, decision trees, timelines, and process flows when they help explain a concept visually.`;
 
 app.post('/api/chat', async (req, res) => {
   try {
